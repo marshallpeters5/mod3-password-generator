@@ -9,7 +9,7 @@ var generateBtn = document.querySelector("#generate");
 function generatePassword() {
   var passwordOptions = []
   var finalPassword = []
-  var length = prompt("How long would you like your password to be?")
+  var length = prompt("How long would you like your password to be? (Must be between 8 and 128 characters)")
   if (length < 8 || length > 128) {
     alert ("Please choose an appropriate length for your password.")
     return;
@@ -29,6 +29,10 @@ function generatePassword() {
   }
   if (hasNum === true) {
     passwordOptions = passwordOptions.concat (numbers)
+  }
+  if (hasUc === false || hasLc === false || hasSym === false || hasNum === false) {
+    alert ("Please select at least one character option for your password.")
+    return;
   }
   for (let i = 0; i < length; i++) {
     finalPassword.push (passwordOptions[Math.floor(Math.random()* passwordOptions.length)])
