@@ -7,6 +7,7 @@ var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
   var passwordOptions = []
+  var finalPassword = []
   var length = prompt("How long would you like your password to be?")
   if (length < 8 || length > 128) {
     alert ("Please choose an appropriate length for your password.")
@@ -28,15 +29,16 @@ function generatePassword() {
   if (hasNum === true) {
     passwordOptions = passwordOptions.concat (numbers)
   }
+  for (let i = 0; i < length; i++) {
+    finalPassword.push (passwordOptions[Math.floor(Math.random()* passwordOptions.length)])
+  }
+  return finalPassword.join("")
 }
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-
 }
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
