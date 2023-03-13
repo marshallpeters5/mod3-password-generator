@@ -29,7 +29,7 @@ function generatePassword() {
   if (hasNum === true) {
     passwordOptions = passwordOptions.concat (numbers)
   }
-  if (hasUc === false || hasLc === false || hasSym === false || hasNum === false) {
+  if (hasUc === false && hasLc === false && hasSym === false && hasNum === false) {
     alert ("Please select at least one character option for your password.")
     return;
   }
